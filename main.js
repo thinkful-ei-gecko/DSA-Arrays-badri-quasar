@@ -94,7 +94,7 @@ function removeCharacters(string, chars) {
   return newString;
 }
 
-// 10. 
+// 10. Products
 function products(numbers) {
   let products = [];
 
@@ -107,6 +107,36 @@ function products(numbers) {
     }
   }
   return products;
+}
+
+// 11. 2D array search
+function search(arr) {
+  let rows = []
+  let columns = []
+  for (let x = 0; x < arr.length; x++) {
+    let row = arr[x]
+    for (let y = 0; y < row.length; y++) {
+      let cell = row[y]
+      if (cell === 0) {
+        rows[x] = true
+        columns[y] = true
+      }
+    }
+  }
+  for (let x = 0; x < arr.length; x++) {
+    let row = arr[x]
+    for (let y = 0; y < row.length; y++) {
+      if (rows[x] || columns[y]) {
+        row[y] = 0
+      }
+    }
+  }
+  return arr;
+}
+
+// 12 String rotation
+function strRotation(str1, str2) {
+  return (str2 + str2).indexOf(str1) != -1;
 }
 
 
@@ -136,9 +166,23 @@ function main() {
     console.log(removeCharacters(string, 'aeiou')); */
 
   // 10.
-  const numbers = [1, 3, 9, 4];
-  console.log(products(numbers));
+  // const numbers = [1, 3, 9, 4];
+  // console.log(products(numbers));
 
+  // 11.
+  // let arr = [[1,0,1,1,0],
+  // [0,1,1,1,0],
+  // [1,1,1,1,1],
+  // [1,0,1,1,1],
+  // [1,1,1,1,1]];
+  // console.log(search(arr))
+
+  // 12.
+  // let str1 = 'amazon'
+  // let str2 = 'azonma'
+  // let str3 = 'azonam'
+  // console.log(strRotation(str1, str2))
+  // console.log(strRotation(str1, str3))
 }
 
 main();

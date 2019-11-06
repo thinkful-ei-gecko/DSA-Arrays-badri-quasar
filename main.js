@@ -34,7 +34,7 @@ function lessThanFive(numbers) {
 
 // 7. Max sum in the arry
 function maxSum(sequence) {
-  if(!sequence.length){
+  if (!sequence.length) {
     throw new Error('must enter a valid array of nums')
   }
   let currentMax = sequence[0]
@@ -44,7 +44,7 @@ function maxSum(sequence) {
     for (let j = i + 1; j < sequence.length; j++) {
       sum += sequence[j]
       if (sum >= currentMax) {
-        currentMax = sum
+        currentMax = sum;
       }
     }
   }
@@ -67,15 +67,47 @@ function mergeSort(arr1, arr2) {
       index1++;
     }
     else {
-        mergedArr[current] = arr2[index2];
-        index2++;
-      }
-    current++
+      mergedArr[current] = arr2[index2];
+      index2++;
     }
-    return mergedArr;
+    current++
   }
-  
+  return mergedArr;
+}
 
+// 9. remove characters, can't use filter, split, or join
+function removeCharacters(string, chars) {
+  let newStringArray = [];
+  let newString = '';
+  let skipcount = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (!chars.includes(string[i])) {
+      newStringArray[i - skipcount] = string[i];
+    } else {
+      skipcount++;
+    }
+  }
+
+  for (let i = 0; i < newStringArray.length; i++) {
+    newString += newStringArray[i];
+  }
+  return newString;
+}
+
+// 10. 
+function products(numbers) {
+  let products = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    products[i] = 1;
+    for (let j = 0; j < numbers.length; j++) {
+      if (j !== i) {
+        products[i] *= numbers[j];
+      }
+    }
+  }
+  return products;
+}
 
 
 function main() {
@@ -98,7 +130,15 @@ function main() {
   // const arr1 = [1, 3, 6, 8, 11]
   // const arr2 = [2, 3, 5, 8, 9, 10]
   // console.log(mergeSort(arr1, arr2))
-  
+
+  // 9.
+  /*   const string = 'Battle of the Vowels: Hawaii vs. Grozny';
+    console.log(removeCharacters(string, 'aeiou')); */
+
+  // 10.
+  const numbers = [1, 3, 9, 4];
+  console.log(products(numbers));
+
 }
 
 main();
